@@ -21,7 +21,7 @@ camera.position.setX(-3)
 
 renderer.render(scene, camera)
 
-//adding the donut
+//adding the torus
 const geometry = new THREE.TorusGeometry(10, 4, 16, 50)
 const material = new THREE.MeshStandardMaterial({ color: 0x44aa88 })
 const torus = new THREE.Mesh(geometry, material)
@@ -73,7 +73,9 @@ moon.position.setX(-10)
 
 //earth
 
-const earthTexture = new THREE.TextureLoader().load('earth.jpeg')
+const earthTexture = new THREE.TextureLoader().load(
+  'https://2.bp.blogspot.com/-Jfw4jY6vBWM/UkbwZhdKxuI/AAAAAAAAK94/QTmtnuDFlC8/s1600/2_no_clouds_4k.jpg'
+)
 
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
