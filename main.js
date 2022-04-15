@@ -73,14 +73,12 @@ moon.position.setX(-10)
 
 //earth
 
-const earthTexture = new THREE.TextureLoader().load(
-  'https://2.bp.blogspot.com/-Jfw4jY6vBWM/UkbwZhdKxuI/AAAAAAAAK94/QTmtnuDFlC8/s1600/2_no_clouds_4k.jpg'
-)
+const earthPicture = new THREE.TextureLoader().load('earth.jpeg')
 
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
-    map: earthTexture,
+    map: earthPicture,
   })
 )
 scene.add(earth)
