@@ -52,11 +52,15 @@ function addStar() {
 Array(200).fill().forEach(addStar)
 
 //space background
-const spaceTexture = new THREE.TextureLoader().load('space.jpg')
+const spaceTexture = new THREE.TextureLoader().load(
+  'https://images.pexels.com/photos/957085/milky-way-starry-sky-night-sky-star-957085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+)
 scene.background = spaceTexture
 
 //moon
-const moonTexture = new THREE.TextureLoader().load('moon.jpg')
+const moonTexture = new THREE.TextureLoader().load(
+  'https://mattloftus.github.io/images/moon_texture.jpg'
+)
 const normalTexture = new THREE.TextureLoader().load('normal.jpg')
 
 const moon = new THREE.Mesh(
@@ -68,17 +72,24 @@ const moon = new THREE.Mesh(
 )
 scene.add(moon)
 
-moon.position.z = 30
+moon.position.z = 35
 moon.position.setX(-10)
 
 //earth
 
-const earthPicture = new THREE.TextureLoader().load('earth.jpeg')
+const earthPicture = new THREE.TextureLoader().load(
+  'https://2.bp.blogspot.com/-Jfw4jY6vBWM/UkbwZhdKxuI/AAAAAAAAK94/QTmtnuDFlC8/s1600/2_no_clouds_4k.jpg'
+)
+const earth2Texture = new THREE.TextureLoader().load(
+  'https://1.bp.blogspot.com/-puWLaF31coQ/Ukb49iL_BgI/AAAAAAAAK-k/mI7c24mkpj8/s640/fair_clouds_8k.jpg'
+)
 
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
     map: earthPicture,
+    normalMap: earth2Texture,
+    transparent: true,
   })
 )
 scene.add(earth)
