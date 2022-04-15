@@ -56,7 +56,6 @@ const spaceTexture = new THREE.TextureLoader().load('space.jpg')
 scene.background = spaceTexture
 
 //moon
-
 const moonTexture = new THREE.TextureLoader().load('moon.jpg')
 const normalTexture = new THREE.TextureLoader().load('normal.jpg')
 
@@ -67,11 +66,24 @@ const moon = new THREE.Mesh(
     normalMap: normalTexture,
   })
 )
-
 scene.add(moon)
 
 moon.position.z = 30
 moon.position.setX(-10)
+
+//earth
+
+const earthTexture = new THREE.TextureLoader().load('earth.jpeg')
+
+const earth = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: earthTexture,
+  })
+)
+scene.add(earth)
+earth.position.z = 50
+earth.position.setX(-20)
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top
@@ -91,11 +103,13 @@ moveCamera()
 function animate() {
   requestAnimationFrame(animate)
 
-  torus.rotation.x += 0.01 //making it rotate
+  torus.rotation.x += 0.01 //making it rotate automatically
   torus.rotation.y += 0.005
   torus.rotation.z += 0.01
 
   moon.rotation.x += 0.005
+
+  earth.rotation.y += 0.01
 
   renderer.render(scene, camera)
 }
