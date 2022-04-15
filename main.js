@@ -22,10 +22,8 @@ camera.position.setX(-3)
 renderer.render(scene, camera)
 
 //adding the donut
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
-const material = new THREE.MeshStandardMaterial({
-  color: 0xff6347,
-})
+const geometry = new THREE.TorusGeometry(10, 4, 16, 50)
+const material = new THREE.MeshStandardMaterial({ color: 0x44aa88 })
 const torus = new THREE.Mesh(geometry, material)
 
 scene.add(torus)
