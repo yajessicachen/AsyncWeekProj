@@ -22,14 +22,13 @@ camera.position.setX(-3)
 
 renderer.render(scene, camera)
 
-//adding the torus
-const geometry = new THREE.TorusGeometry(10, 4, 16, 50)
-const material = new THREE.MeshStandardMaterial({ color: 0x44aa88 })
-const torus = new THREE.Mesh(geometry, material)
+//space background
+const spaceTexture = new THREE.TextureLoader().load(
+  'https://images.pexels.com/photos/957085/milky-way-starry-sky-night-sky-star-957085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+)
+scene.background = spaceTexture
 
-scene.add(torus)
-
-//the light of the donut
+//the light
 const pointLight = new THREE.PointLight(0xffffff)
 pointLight.position.set(5, 5, 5)
 // scene.add(pointLight)
@@ -60,11 +59,26 @@ function addStar() {
 }
 Array(200).fill().forEach(addStar)
 
-//space background
-const spaceTexture = new THREE.TextureLoader().load(
-  'https://images.pexels.com/photos/957085/milky-way-starry-sky-night-sky-star-957085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+//adding the torus
+const geometry = new THREE.TorusGeometry(10, 4, 16, 50)
+const material = new THREE.MeshStandardMaterial({ color: 0x44aa88 })
+const torus = new THREE.Mesh(geometry, material)
+
+scene.add(torus)
+
+//Sun
+const sunPicture = new THREE.TextureLoader().load(
+  'https://upload.wikimedia.org/wikipedia/commons/a/a4/Solarsystemscope_texture_8k_sun.jpg'
 )
-scene.background = spaceTexture
+const sun = new THREE.Mesh(
+  new THREE.SphereGeometry(4, 50, 50),
+  new THREE.MeshStandardMaterial({
+    map: sunPicture,
+  })
+)
+scene.add(sun)
+sun.position.z = 35
+sun.position.setX(-10)
 
 //moon
 const moonTexture = new THREE.TextureLoader().load(
@@ -73,7 +87,7 @@ const moonTexture = new THREE.TextureLoader().load(
 const normalTexture = new THREE.TextureLoader().load('normal.jpg')
 
 const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(2, 32, 32),
+  new THREE.SphereGeometry(1, 32, 32),
   new THREE.MeshStandardMaterial({
     map: moonTexture,
     normalMap: normalTexture,
@@ -81,8 +95,8 @@ const moon = new THREE.Mesh(
 )
 scene.add(moon)
 
-moon.position.z = 35
-moon.position.setX(-10)
+moon.position.z = 45
+moon.position.setX(-15)
 
 //earth
 const earthPicture = new THREE.TextureLoader().load(
@@ -93,15 +107,15 @@ const earthCloudTexture = new THREE.TextureLoader().load(
 )
 
 const earth = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 30, 30),
+  new THREE.SphereGeometry(2.5, 30, 30),
   new THREE.MeshStandardMaterial({
     map: earthPicture,
     normalMap: earthCloudTexture,
   })
 )
 scene.add(earth)
-earth.position.z = 50
-earth.position.setX(-20)
+earth.position.z = 55
+earth.position.setX(-10)
 
 function UserScroll() {
   const top = document.body.getBoundingClientRect().top //top property (how far we are from the webpage)
@@ -124,6 +138,10 @@ function animate() {
   torus.rotation.x += 0.01 //making it rotate automatically
   torus.rotation.y += 0.005
   torus.rotation.z += 0.01
+
+  sun.rotation.x += 0.01 //making it rotate automatically
+  sun.rotation.y += 0.005
+  sun.rotation.z += 0.01
 
   moon.rotation.x += 0.005
 
