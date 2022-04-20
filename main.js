@@ -66,6 +66,16 @@ const torus = new THREE.Mesh(geometry, material)
 
 scene.add(torus)
 
+//meBox
+
+const mePicture = new THREE.TextureLoader().load('me.jpg')
+const me = new THREE.Mesh(
+  new THREE.BoxGeometry(5, 6, 5),
+  new THREE.MeshBasicMaterial({ map: mePicture })
+)
+scene.add(me)
+me.position.z = 5
+
 //Sun
 const sunPicture = new THREE.TextureLoader().load(
   'https://upload.wikimedia.org/wikipedia/commons/a/a4/Solarsystemscope_texture_8k_sun.jpg'
@@ -123,6 +133,9 @@ function UserScroll() {
   moon.rotation.y += 0.1
   moon.rotation.z += 0.01
 
+  me.rotation.y += 0.01
+  // me.rotation.x += 0.01
+
   camera.position.z = top * -0.01
   camera.position.x = top * -0.0002
   camera.rotation.y = top * -0.0002
@@ -137,7 +150,7 @@ function animate() {
 
   torus.rotation.x += 0.01 //making it rotate automatically
   torus.rotation.y += 0.005
-  torus.rotation.z += 0.01
+  // torus.rotation.z += 0.01
 
   sun.rotation.x += 0.01 //making it rotate automatically
   sun.rotation.y += 0.005
