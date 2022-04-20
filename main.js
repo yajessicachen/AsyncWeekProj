@@ -109,7 +109,7 @@ const venus = new THREE.Mesh(
 )
 scene.add(venus)
 
-venus.position.z = 65
+venus.position.z = 63
 venus.position.setX(-10)
 
 //moon
@@ -154,7 +154,7 @@ function UserScroll() {
 
   camera.position.z = top * -0.01
   camera.position.x = top * -0.0002
-  camera.rotation.y = top * -0.0002
+  camera.rotation.y = top * -0.0003
 }
 
 document.body.onscroll = UserScroll
