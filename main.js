@@ -66,22 +66,12 @@ const torus = new THREE.Mesh(geometry, material)
 
 scene.add(torus)
 
-//meBox
-
-const mePicture = new THREE.TextureLoader().load('me.jpg')
-const me = new THREE.Mesh(
-  new THREE.BoxGeometry(5, 6, 5),
-  new THREE.MeshBasicMaterial({ map: mePicture })
-)
-scene.add(me)
-me.position.z = 5
-
 //Sun
 const sunPicture = new THREE.TextureLoader().load(
   'https://upload.wikimedia.org/wikipedia/commons/a/a4/Solarsystemscope_texture_8k_sun.jpg'
 )
 const sun = new THREE.Mesh(
-  new THREE.SphereGeometry(4, 50, 50),
+  new THREE.SphereGeometry(5, 100, 100),
   new THREE.MeshStandardMaterial({
     map: sunPicture,
   })
@@ -90,22 +80,34 @@ scene.add(sun)
 sun.position.z = 35
 sun.position.setX(-10)
 
+//mercury
+const mercuryPicture = new THREE.TextureLoader().load(
+  'https://ichef.bbci.co.uk/news/624/cpsprodpb/11F6E/production/_109628537_7080b2d6-2182-4592-a074-f3b7e628c246.jpg'
+)
+const mercury = new THREE.Mesh(
+  new THREE.SphereGeometry(2, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: mercuryPicture,
+  })
+)
+scene.add(mercury)
+
+mercury.position.z = 50
+mercury.position.setX(-10)
+
 //moon
 const moonTexture = new THREE.TextureLoader().load(
   'https://mattloftus.github.io/images/moon_texture.jpg'
 )
-const normalTexture = new THREE.TextureLoader().load('normal.jpg')
-
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(1, 32, 32),
   new THREE.MeshStandardMaterial({
     map: moonTexture,
-    normalMap: normalTexture,
   })
 )
 scene.add(moon)
 
-moon.position.z = 45
+moon.position.z = 65
 moon.position.setX(-15)
 
 //earth
@@ -124,7 +126,7 @@ const earth = new THREE.Mesh(
   })
 )
 scene.add(earth)
-earth.position.z = 55
+earth.position.z = 75
 earth.position.setX(-10)
 
 function UserScroll() {
@@ -132,9 +134,6 @@ function UserScroll() {
   moon.rotation.x += 0.01
   moon.rotation.y += 0.1
   moon.rotation.z += 0.01
-
-  me.rotation.y += 0.01
-  // me.rotation.x += 0.01
 
   camera.position.z = top * -0.01
   camera.position.x = top * -0.0002
@@ -155,6 +154,9 @@ function animate() {
   sun.rotation.x += 0.01 //making it rotate automatically
   sun.rotation.y += 0.005
   sun.rotation.z += 0.01
+
+  mercury.rotation.y += 0.005
+  mercury.rotation.z += 0.01
 
   moon.rotation.x += 0.005
 
