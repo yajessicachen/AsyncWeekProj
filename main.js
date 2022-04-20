@@ -82,8 +82,9 @@ sun.position.setX(-10)
 
 //mercury
 const mercuryPicture = new THREE.TextureLoader().load(
-  'https://ichef.bbci.co.uk/news/624/cpsprodpb/11F6E/production/_109628537_7080b2d6-2182-4592-a074-f3b7e628c246.jpg'
+  'https://www.x3dom.org/x3dom/example/texture/solarSystem/Mercury.jpg'
 )
+
 const mercury = new THREE.Mesh(
   new THREE.SphereGeometry(2, 32, 32),
   new THREE.MeshStandardMaterial({
@@ -92,23 +93,39 @@ const mercury = new THREE.Mesh(
 )
 scene.add(mercury)
 
-mercury.position.z = 50
+mercury.position.z = 53
 mercury.position.setX(-10)
+
+//venus
+const venusPicture = new THREE.TextureLoader().load(
+  'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e3c8c32-7b34-4fa5-9c43-b50563b20795/d5y0655-f40c5831-fa9b-4f7c-9a5e-77122333fea8.jpg/v1/fill/w_1024,h_512,q_75,strp/venus_surface_texture_by_abdullahwaqar8_d5y0655-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTEyIiwicGF0aCI6IlwvZlwvMGUzYzhjMzItN2IzNC00ZmE1LTljNDMtYjUwNTYzYjIwNzk1XC9kNXkwNjU1LWY0MGM1ODMxLWZhOWItNGY3Yy05YTVlLTc3MTIyMzMzZmVhOC5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.OWHRHlW1dr2D1XRb5DGPNIV_cH0kSCKOk7UbSeS7wEY'
+)
+
+const venus = new THREE.Mesh(
+  new THREE.SphereGeometry(2, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: venusPicture,
+  })
+)
+scene.add(venus)
+
+venus.position.z = 65
+venus.position.setX(-10)
 
 //moon
 const moonTexture = new THREE.TextureLoader().load(
   'https://mattloftus.github.io/images/moon_texture.jpg'
 )
 const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(1, 32, 32),
+  new THREE.SphereGeometry(0.7, 32, 32),
   new THREE.MeshStandardMaterial({
     map: moonTexture,
   })
 )
 scene.add(moon)
 
-moon.position.z = 65
-moon.position.setX(-15)
+moon.position.z = 73
+moon.position.setX(-17)
 
 //earth
 const earthPicture = new THREE.TextureLoader().load(
@@ -157,6 +174,10 @@ function animate() {
 
   mercury.rotation.y += 0.005
   mercury.rotation.z += 0.01
+
+  venus.rotation.y += 0.003
+  venus.rotation.z += 0.02
+  venus.rotation.y += 0.005
 
   moon.rotation.x += 0.005
 
