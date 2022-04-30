@@ -60,7 +60,7 @@ function addStar() {
 Array(200).fill().forEach(addStar)
 
 //adding the torus
-const geometry = new THREE.TorusGeometry(10, 4, 16, 50)
+const geometry = new THREE.TorusGeometry(8, 3, 16, 50)
 const material = new THREE.MeshStandardMaterial({ color: 0x44aa88 })
 const torus = new THREE.Mesh(geometry, material)
 
