@@ -136,7 +136,7 @@ const earthCloudTexture = new THREE.TextureLoader().load(
 )
 
 const earth = new THREE.Mesh(
-  new THREE.SphereGeometry(2.5, 30, 30),
+  new THREE.SphereGeometry(3, 30, 30),
   new THREE.MeshStandardMaterial({
     map: earthPicture,
     normalMap: earthCloudTexture,
@@ -145,6 +145,36 @@ const earth = new THREE.Mesh(
 scene.add(earth)
 earth.position.z = 75
 earth.position.setX(-10)
+
+//mars
+const marsPicture = new THREE.TextureLoader().load(
+  'https://i.imgur.com/Sc2qtrB.jpeg'
+)
+const mars = new THREE.Mesh(
+  new THREE.SphereGeometry(1.8, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: marsPicture,
+  })
+)
+scene.add(mars)
+
+mars.position.z = 80
+mars.position.setX(-5)
+
+//jupiter
+const jupiterPicture = new THREE.TextureLoader().load(
+  'https://t3.ftcdn.net/jpg/03/38/48/76/360_F_338487677_aq1BI8JqccpcjLDKiSrUc3z5D9ggAm3b.jpg'
+)
+const jupiter = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: jupiterPicture,
+  })
+)
+scene.add(jupiter)
+
+jupiter.position.z = 90
+jupiter.position.setX(1)
 
 function UserScroll() {
   const top = document.body.getBoundingClientRect().top //top property (how far we are from the webpage)
@@ -177,11 +207,15 @@ function animate() {
 
   venus.rotation.y += 0.003
   venus.rotation.z += 0.02
-  venus.rotation.y += 0.005
 
   moon.rotation.x += 0.005
 
   earth.rotation.y += 0.01
+
+  mars.rotation.y += 0.003
+  mars.rotation.x += 0.001
+
+  jupiter.rotation.y += 0.01
 
   // controls.update()
 
