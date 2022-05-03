@@ -71,7 +71,7 @@ const sunPicture = new THREE.TextureLoader().load(
   'https://upload.wikimedia.org/wikipedia/commons/a/a4/Solarsystemscope_texture_8k_sun.jpg'
 )
 const sun = new THREE.Mesh(
-  new THREE.SphereGeometry(5, 100, 100),
+  new THREE.SphereGeometry(7, 32, 32),
   new THREE.MeshStandardMaterial({
     map: sunPicture,
   })
@@ -158,7 +158,7 @@ const mars = new THREE.Mesh(
 )
 scene.add(mars)
 
-mars.position.z = 80
+mars.position.z = 83
 mars.position.setX(-5)
 
 //jupiter
@@ -173,8 +173,8 @@ const jupiter = new THREE.Mesh(
 )
 scene.add(jupiter)
 
-jupiter.position.z = 90
-jupiter.position.setX(1)
+jupiter.position.z = 95
+jupiter.position.setX(0)
 
 function UserScroll() {
   const top = document.body.getBoundingClientRect().top //top property (how far we are from the webpage)
